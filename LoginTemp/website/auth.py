@@ -27,6 +27,7 @@ def login():
                 return redirect(url_for('views.home'))
             else:
                 flash('Password is incorrect', category='danger')
+        flash('Email is incorrect', category='danger')
 
     return render_template('login.html', boolean=True)
 
