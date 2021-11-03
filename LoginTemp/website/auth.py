@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request, flash, redirect, url_for
+from flask import Blueprint, render_template, request, flash, redirect, url_for, session
 import bcrypt
 
 
@@ -23,7 +23,9 @@ def login():
         for user in users:
             passwordcheck = user['Password']
             if bcrypt.checkpw(password.encode('utf-8'), passwordcheck):
+                session['email'] = request.form['email']
                 flash('Logged in successfully', category='success')
+                print(session)
                 return redirect(url_for('views.home'))
             else:
                 flash('Password is incorrect', category='danger')
@@ -35,7 +37,9 @@ def login():
 def logout():
     """ Route to logout a logged in user. The function does not perform any logout logic
     except redirecting to an empty page. This functionality must be developed. """
-    return "<p>Logout</p>"
+    session.pop('email', None)
+    flash('Logged out successfully', category='success')
+    return redirect(url_for('auth.login'))
 
 
 @auth.route('/sign-up', methods=['GET', 'POST'])

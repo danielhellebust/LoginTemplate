@@ -1,9 +1,10 @@
 import os
 from bson import ObjectId
 from datetime import datetime
-from flask import Blueprint, render_template, request, flash, redirect, current_app, url_for
+from flask import Blueprint, render_template, request, flash, redirect, current_app, url_for, session
 from werkzeug.utils import secure_filename
 from . import mongo, ALLOWED_EXTENSIONS
+
 
 views = Blueprint('views', __name__)
 
@@ -18,7 +19,11 @@ def allowed_file(filename):
 @views.route('/', methods=['GET', 'POST'])
 def home():
     """ Route to home page """
+    if 'email' in session:
+        return render_template("home.html")
+
+    return redirect(url_for('auth.login'))
 
 
-    return render_template("home.html")
+
 
