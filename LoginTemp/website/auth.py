@@ -1,8 +1,6 @@
 from flask import Blueprint, render_template, request, flash, redirect, url_for, session
 import bcrypt
 
-
-
 # import db object from root folder
 from . import mongo
 
