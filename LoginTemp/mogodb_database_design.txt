@@ -1,0 +1,41 @@
+use WebScraper;
+
+
+db.createCollection(user", {
+    "storageEngine": {
+        "wiredTiger": {}
+    },
+    "capped": false,
+    "validator": {
+        "$jsonSchema": {
+            "bsonType": "object",
+            "title": "User",
+            "properties": {
+                "_id": {
+                    "bsonType": "string"
+                },
+                "UserName": {
+                    "bsonType": "string"
+                },
+                "Address": {
+                    "bsonType": "string"
+                },
+                "ZipCode": {
+                    "bsonType": "string"
+                },
+                "City": {
+                    "bsonType": "string"
+                },
+                "Country": {
+                    "bsonType": "string"
+                },
+                "Password": {
+                    "bsonType": "string"
+                }
+            }
+        }
+    },
+    "validationLevel": "off",
+    "validationAction": "warn"
+});
+

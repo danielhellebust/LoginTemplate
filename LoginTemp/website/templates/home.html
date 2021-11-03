@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block title %}
+    Home
+{% endblock %}
+{% block content %}
+
+
+    <div class="container">
+        <form method="post">
+            <div class="row">
+
+                <div class="col-10">
+                    <!--Column Right-->
+                    <br>
+                    <div class="text-center">
+                        <form>
+                            <div class="row">
+                                <div class="col-10">
+                                    <! –– Free-text search field ––>
+                                    <div class="form-group text-center">
+
+                                        <input
+                                                type="text"
+                                                class="form-control text-center"
+                                                id="productSearch"
+                                                name="productSearch"
+                                                placeholder="Search for a product"
+                                        />
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <button type="submit" class="btn btn-primary">Search</button>
+                        </form>
+                    </div>
+                </div>
+
+                <br>
+                <div class="row">
+                    <!--Search Result-->
+
+                </div>
+            </div>
+    </div>
+    </div>
+    </form>
+    </div>
+
+{% endblock %}
