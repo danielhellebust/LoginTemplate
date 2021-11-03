@@ -1,4 +1,7 @@
 from flask import Blueprint, render_template, request, flash, redirect, url_for
+import bcrypt
+
+
 
 # import db object from root folder
 from . import mongo
@@ -15,11 +18,11 @@ def login():
     if request.method == 'POST':
         email = request.form.get('email')
         password = request.form.get('password')
-        print(email, password)
 
         users = mongo.db.user.find({"_id": email})
         for user in users:
-            if user['Password'] == password:
+            passwordcheck = user['Password']
+            if bcrypt.checkpw(password.encode('utf-8'), passwordcheck):
                 flash('Logged in successfully', category='success')
                 return redirect(url_for('views.home'))
             else:
@@ -64,10 +67,12 @@ def sign_up():
         elif len(password1) < 7:
             flash('Passwords musty be at least 7 characters', category='error')
         else:
+            hashed = bcrypt.hashpw(password2.encode('utf-8'), bcrypt.gensalt())
+
             # Insert query for a new customer in the database. Email is set as a primary key and _id for the document.
             # Password is plain text and must be encrypted for security reasons.
             user_collection.insert_one({"_id": email, "UserName": name, "Address": address, "ZipCode": zipcode,
-                                            "City": city, "Country": country, "Password": password1})
+                                            "City": city, "Country": country, "Password": hashed})
             flash('Account created!', category='success')
 
             # If successful sign_up, customer is redirected to the login page.
