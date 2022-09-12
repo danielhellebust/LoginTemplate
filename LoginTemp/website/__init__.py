@@ -12,11 +12,11 @@ def create_app():
 
     # app.config variables should be wrapped in environment variables for security reasons.
 
-    app.config['SECRET_KEY'] = 'sdfgdfghfjyuikyuiyukyuk'
+    app.config['SECRET_KEY'] = 'YOUR SECRET KEY HERE'
 
 
     # MongoDB connection string to Atlas cluster. Username and password is admin and name of DB is LoginTemplate
-    app.config['MONGO_URI'] = f'mongodb+srv://admin:admin@cluster0.rhshz.mongodb.net/LoginTemplate?retryWrites=true&w=majority'
+    app.config['MONGO_URI'] = f'YOUR MONGODB URI'
 
     # Upload folder for product images
     app.config['UPLOAD_FOLDER'] = '/website/static/uploads'
