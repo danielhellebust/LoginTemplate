@@ -1,5 +1,5 @@
 ## Login Template
-Basic login functionality with encrypted passwords. Must set up a MongoDB database. https://www.mongodb.com/pricing. Database design is provided as a .txt file. 
+FLASK application with basic login functionality with encrypted passwords. Must set up a MongoDB database. https://www.mongodb.com/pricing. Database design is provided as a .txt file. 
 
 
 
