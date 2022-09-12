@@ -1,5 +1,3 @@
-use WebScraper;
-
 
 db.createCollection(user", {
     "storageEngine": {
